@@ -17,7 +17,7 @@ class Coverage:
         #os.chdir('/home/cramallo/Downloads/training')
         os.getcwd()
         print(os.getcwd())
-        print(os.chdir('home/travis/cramallo/project-java-travis/build/reports'))
+        #print(os.chdir('home/travis/cramallo/project-java-travis/build/reports'))
         #os.system('./gradlew build clean')
         coverage_report_path = './build/reports/jacoco/test/jacocoTestReport.xml'
         tree = ET.parse(coverage_report_path)
