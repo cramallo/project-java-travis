@@ -12,6 +12,8 @@ class DependencyMetric():
         #os.chdir('/home/cramallo/Downloads/training')
         dependencies_tree = os.popen(
             'gradlew dependencies').read()
+        print("dependencies")
+        print(os.popen('gradlew dependencies').read())
         # remove spaces
         dependencies_tree = dependencies_tree.replace('\n\n', '\n')
         dependencies = dependencies_tree.split('\n')
