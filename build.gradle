@@ -134,6 +134,7 @@ cpdCheck {
 	source = sourceSets.main.allJava
 }
 
+test.finalizedBy jacocoTestReport
 
 /*tasks.withType(FindBugs) {
 	reports {

@@ -23,7 +23,6 @@ before_install:
   - sudo apt-get install python3
 
 script:
-  - ./gradlew build clean
-  - ./gradlew jacocoTestReport
+  - ./gradlew clean build
   - chmod a+rwx coverage.py
   - python3 coverage.py
