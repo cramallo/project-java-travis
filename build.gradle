@@ -118,6 +118,7 @@ cpd {
 	language = 'java'
 	//toolVersion = '6.0.0'
 	//skipLexicalErrors = true
+	ignoreFailures = true
 	minimumTokenCount = 100 // approximately 5-10 lines
 }
 
