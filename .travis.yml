@@ -25,6 +25,5 @@ before_install:
 script:
   - ./gradlew build clean
   - ./gradlew jacocoTestReport
-  - export PATH = "$PATH"
   - chmod a+rwx coverage.py
   - python3 coverage.py
