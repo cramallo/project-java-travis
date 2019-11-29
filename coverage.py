@@ -16,7 +16,7 @@ class Coverage:
     def set_variables(self):
         #os.chdir('/home/cramallo/Downloads/training')
         os.getcwd()
-        os.system('./gradlew build clean')
+        #os.system('./gradlew build clean')
         coverage_report_path = './build/reports/jacoco/test/jacocoTestReport.xml'
         tree = ET.parse(coverage_report_path)
         root = tree.getroot()
