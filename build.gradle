@@ -5,6 +5,8 @@ buildscript {
 	dependencies {
 		classpath 'de.aaschmid:gradle-cpd-plugin:2.0'
 		//classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8'
+		classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
+
 	}
 }
 
@@ -13,16 +15,13 @@ plugins {
 	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
 	id 'de.aaschmid.cpd' version '2.0'
-	//id 'checkstyle'
 }
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
-//apply plugin: 'checkstyle'
-//apply plugin: 'findbugs'
 apply plugin: 'pmd'
-//apply plugin: 'project-report'
 //apply plugin: "org.sonarqube"
 apply plugin: de.aaschmid.gradle.plugins.cpd.CpdPlugin
+apply plugin: 'org.kordamp.gradle.stats'
 
 group = 'com.wolox'
 version = '0.0.1-SNAPSHOT'
@@ -74,7 +73,6 @@ dependencies {
 			'log4j:log4j:1.2.17'
 	)
 	implementation 'net.objectlab:qalab:1.0'
-//	clover 'org.openclover:clover:4.3.1'
 }
 
 jacoco {
@@ -88,24 +86,6 @@ jacocoTestReport {
 		html.enabled = true
 	}
 }
-
-/*tasks.withType(Checkstyle) {
-	reports {
-		xml.enabled false
-		html.enabled true
-		html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
-	}
-}*/
-/*checkstyle {
-	toolVersion = '6.16.1'
-	//ignoreFailures = false
-	//configFile = file("${rootGradleDir}/static-code-analysis/checkstyle/checkstyle.xml")
-}*/
-
-/*findbugs{
-	//ignoreFailures=true
-	findbugsTest.enabled=false
-}*/
 
 pmd {
 	toolVersion = "6.19.0"
@@ -136,75 +116,3 @@ cpdCheck {
 
 test.finalizedBy jacocoTestReport
 
-/*tasks.withType(FindBugs) {
-	reports {
-		xml.enabled = false
-		html.enabled = true
-	}
-}
-tasks.withType(Pmd){
-	reports{
-		xml.enabled=true
-		html.enabled=true
-	}
-}
-
-//copying all dependencies attached to 'compileClasspath' into a specific folder
-/*task copyAllDependencies(type: Copy) {
-	//referring to the 'compileClasspath' configuration
-	from configurations.compileClasspath
-	into 'allLibs'
-}
-*/
-//sonarqube {
-//	properties {
-//		property "sonar.exclusions", "**/*Generated.java"
-//	}
-//}
-
-//task printDirectDepsTree {
-//	Set directDependencies = []
-//	Set indirectDependencies = []
-//	configurations.each {
-//		if(it.isCanBeResolved()){
-			//println(it.name)
-			//println("++++++++++++++++++++++")
-			//println(it.incoming.getResolutionResult().getRoot())
-//			it.incoming.getResolutionResult().getAllDependencies().each { depResult ->
-				/*println(depResult.toString() + " ")
-				println(depResult.getRequested())
-				println(depResult.getFrom().toString())
-				println(depResult.getFrom().toString().equalsIgnoreCase("project :"))
-				println("-----------------------------------------------------")*/
-/*				if (depResult.getFrom().toString().equalsIgnoreCase("project :")) {
-					directDependencies.add(depResult.toString())
-				}else{
-					indirectDependencies.add(depResult.toString())
-				}
-			}
-		}
-	}
-	def directDependenciesMap = [
-	        numberOfDirectDependencies : directDependencies.size(),
-			directDependencies : directDependencies
-	]
-
-	def indirectDependenciesMap = [
-	        numberOfIndirectDependencies : indirectDependencies.size(),
-			indirectDependencies : indirectDependencies
-	]
-
-	File file = new File("directDependencies.json")
-	file.write(groovy.json.JsonOutput.toJson(directDependenciesMap))
-
-	File file2 = new File("indirectDependencies.json")
-	file2.write(groovy.json.JsonOutput.toJson(indirectDependenciesMap))
-
-}
-
-task runPython(type:Exec) {
-	workingDir '/home/cramallo/Desktop/metrics'
-	commandLine 'python3', 'metrics.py'
-}
-
-test.finalizedBy jacocoTestReport*/
