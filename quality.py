@@ -55,8 +55,8 @@ class Quality:
         medium_priority_weighing = medium_priority_percentage * 0.30
         low_priority_weighing = low_priority_percentage * 0.10
 
-        code_smells_ratio = (high_priority_weighing +
-                             medium_priority_weighing + low_priority_weighing) / 3
+        code_smells_ratio = round(((high_priority_weighing +
+                                    medium_priority_weighing + low_priority_weighing) / 3), 2)
 
         score = str(self.calculate_score_code_smells(code_smells_ratio))
 
@@ -65,7 +65,7 @@ class Quality:
         print('High priority: '+str(high_priority))
         print('Medium priority: '+str(medium_priority))
         print('Low priority: '+str(low_priority))
-        print('Code smells ratio: ' + str(code_smells_ratio))
+        print('Code smells ratio: ' + str(code_smells_ratio) + "%")
         print('Score: ' + score)
         print('------------------------------')
 
