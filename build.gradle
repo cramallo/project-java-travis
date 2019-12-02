@@ -5,7 +5,7 @@ buildscript {
 	dependencies {
 		classpath 'de.aaschmid:gradle-cpd-plugin:2.0'
 		//classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8'
-		classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
+		//classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
 
 	}
 }
@@ -21,7 +21,7 @@ apply plugin: 'jacoco'
 apply plugin: 'pmd'
 //apply plugin: "org.sonarqube"
 apply plugin: de.aaschmid.gradle.plugins.cpd.CpdPlugin
-apply plugin: 'org.kordamp.gradle.stats'
+//apply plugin: 'org.kordamp.gradle.stats'
 
 group = 'com.wolox'
 version = '0.0.1-SNAPSHOT'

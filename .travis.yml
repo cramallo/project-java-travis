@@ -25,4 +25,4 @@ before_install:
 script:
   - ./gradlew clean build
   - chmod a+rwx coverage.py
-  - python3 dependencies.py
+  - python3 general_metrics.py
